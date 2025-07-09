@@ -1,0 +1,120 @@
+package linked_list;
+class Node
+{
+	int data;
+	Node next;
+	
+	Node(int data)
+	{
+		this.data=data;
+	}
+}
+
+class SinglyLinkedL
+{
+	Node head,tail;
+	public void insert(int data)
+	{
+		Node n=new Node(data);
+		n.next=null;
+		
+		if(head==null)
+		{
+			head=n;
+			tail=n;
+		}
+		else
+		{
+			tail.next=n;
+			tail=n;
+		}
+	}
+	
+	public void Beginning(int data){
+		Node n=new Node(data);
+		n.next=head;
+		head=n;
+	}
+	
+	public void End(int data){
+		Node n=new Node(data);
+		tail.next=n;
+		tail=n;
+	}
+	
+	public void Center(int pos,int data)
+	{
+		Node temp=head;
+		Node n=new Node(data);
+		for(int i=0;i<pos-1;i++) {
+			temp=temp.next;
+		}
+		n.next=temp.next;
+		temp.next=n;
+		
+	}
+	
+	public void Deletebeginning()
+	{
+		Node temp=head;
+		head=head.next;
+		temp.next=null;
+	}
+	
+	public void DeleteEnd()
+	{
+		Node temp=head;
+		while(temp.next!=tail)
+		{
+			temp=temp.next;
+		}
+		temp.next=null;
+		tail=temp;
+	}
+	
+	public void DeleteAt(int pos)
+	{
+		Node temp=head;
+		for(int i=0;i<pos-1;i++)
+		{
+			temp=temp.next;
+		}
+		temp.next=temp.next.next;
+	}
+	public void display()
+	{
+		Node temp=head;
+		while(temp!=null)
+		{
+			System.out.println(temp.data);
+			temp=temp.next;
+		}
+	}
+	
+	
+}
+public class Singlyll {
+
+	public static void main(String[] args) {
+		SinglyLinkedL l=new SinglyLinkedL();
+		l.insert(10);
+		l.insert(20);
+		l.insert(30);
+		l.insert(40);
+		l.insert(50);
+		//10 20 30 40
+		//0  1  2  3
+		//l.Beginning(5);
+		//l.End(60);
+		//l.Center(2,25);
+		//l.Center(1, 15);
+		
+		//l.Deletebeginning();
+		//l.DeleteEnd();
+		//l.DeleteAt(2);
+		l.DeleteAt(2);
+		l.display();
+
+	}
+
+}
