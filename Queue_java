@@ -1,0 +1,72 @@
+package queue;
+class Nomain
+{
+	int a[]=new int[5];
+	int rear=-1,front=-1;
+	public void enqueue(int data)
+	{
+		if(rear==a.length-1)
+		{
+			System.out.println("Queue is full");
+		}
+		else if(rear==-1 && front==-1)
+		{
+			rear=0;
+			front=0;
+			a[rear]=data;
+		}
+		else
+		{
+			rear++;
+			a[rear]=data;
+		}
+	}
+	public void dequeue()
+	{
+		if(rear==-1)
+		{
+			System.out.println("Queue is empty");
+		}
+		else if(rear==front)
+		{
+			System.out.println("Popped element is "+a[rear]);
+			rear=-1;
+			front=-1;
+		}
+		else
+		{
+			System.out.println("Popped element is "+a[front]);
+			front++;
+		}
+	}
+	public void display()
+	{
+		if(rear==-1)
+		{
+			System.out.println("Queue is empty");
+		}
+		else {
+			System.out.println("The queue elements are :");
+			for (int i=front;i<=rear;i++)
+			{
+				System.out.println(a[i]);
+			}
+		}
+		
+	}
+	
+}
+public class Queue {
+
+	public static void main(String[] args) {
+		Nomain n=new Nomain();
+		n.enqueue(10);
+		n.enqueue(20);
+		n.enqueue(30);
+		n.enqueue(40);
+		n.display();
+		n.dequeue();
+		n.display();
+		
+			}
+}
